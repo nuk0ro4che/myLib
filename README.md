@@ -1,3 +1,3 @@
 # myLib
 
-library for pok0roche
+library for shortmappet
