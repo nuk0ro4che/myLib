@@ -38,22 +38,6 @@ function formatNumber(value) {
     return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
-function mute(player) {
-    player.mute(true);
-}
-
-function unmute(player) {
-    player.mute(false);
-}
-
-function mutelocal(subject, player) {
-    subject.setPlayerMuted(player, true);
-}
-
-function unmutelocal(subject, player) {
-    subject.setPlayerMuted(player, false);
-}
-
 function contains(array, value) {
     if (array.indexOf(value) != -1) {
         return true;
