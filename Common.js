@@ -55,7 +55,8 @@ function unmutelocal(subject, player) {
 }
 
 function contains(array, value) {
-    if (array.indexOf(value) != -1)
-    return true;
+    if (array.indexOf(value) != -1) {
+        return true;
+    }
     return false;
 }
