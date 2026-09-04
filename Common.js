@@ -1,1 +1,1 @@
-const test = "1234";
+const test = "еблан";
