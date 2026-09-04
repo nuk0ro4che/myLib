@@ -1,2 +1,2 @@
-const test = "casdc";
-var csd = "1234";
+const test = "asdfasdfasdfzxcvvvvvvv";
+var csd = "asdfasdf";
