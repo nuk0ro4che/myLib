@@ -14,3 +14,16 @@ function spawnItem(wrld, id, count, pos, tag) {
     
     return npc
 }
+
+function doClientGlowing(player, entity) {
+    const DataParameter = Java.type("net.minecraft.network.datasync.DataParameter")
+    const EntityDataManager = Java.type("net.minecraft.network.datasync.EntityDataManager")
+    const SPacketEntityMetadata = Java.type("net.minecraft.network.play.server.SPacketEntityMetadata")
+    
+    const byteSerializer = Java.type("net.minecraft.network.datasync.DataSerializers").field_187191_a
+    const Byte = Java.type("java.lang.Byte")
+    const dataManager = entity.func_184212_Q();
+    
+    dataManager.func_187227_b(new DataParameter(0, byteSerializer), Byte.parseByte(0x40));
+    player.field_71135_a.func_147359_a(new SPacketEntityMetadata(entity.func_145782_y(), dataManager, true));
+}
