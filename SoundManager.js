@@ -13,11 +13,11 @@ const sound = {
 
         sound.setVolume(0.0);
 
-        c.scheduleScript(1, function (context) {
-            var current = context.getValue("fade_current") + 1;
-            var total = context.getValue("fade_ticks");
-            var target = context.getValue("fade_target");
-            var currentSound = context.getValue("fade_sound");
+        c.scheduleScript(1, function (c) {
+            var current = c.getValue("fade_current") + 1;
+            var total = c.getValue("fade_ticks");
+            var target = c.getValue("fade_target");
+            var currentSound = c.getValue("fade_sound");
 
             var progress = current / total;
 
@@ -26,10 +26,10 @@ const sound = {
             }
 
             currentSound.setVolume(target * progress);
-            context.setValue("fade_current", current);
+            c.setValue("fade_current", current);
 
             if (current < total) {
-                context.scheduleScript(1, arguments.callee);
+                c.scheduleScript(1, arguments.callee);
             }
         });
     },
@@ -43,7 +43,7 @@ const sound = {
         var startVolume = sound.getVolume();
         var currentTick = 0;
 
-        var update = function(context) {
+        var update = function(c) {
             currentTick++;
 
             var progress = currentTick / ticks;
@@ -56,7 +56,7 @@ const sound = {
             sound.setVolume(volume);
 
             if (currentTick < ticks) {
-                context.scheduleScript(1, update);
+                c.scheduleScript(1, update);
             } else {
                 sound.stop();
             }
@@ -79,7 +79,7 @@ const sound = {
 
         managedSound.setVolume(0.0);
 
-        var update = function(context) {
+        var update = function(c) {
             currentTick++;
 
             var volume;
@@ -103,7 +103,7 @@ const sound = {
             managedSound.setVolume(volume);
 
             if (currentTick < totalTicks) {
-                context.scheduleScript(1, update);
+                c.scheduleScript(1, update);
             } else {
                 managedSound.setVolume(0.0);
                 managedSound.stop();
